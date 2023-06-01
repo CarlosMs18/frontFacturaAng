@@ -22,10 +22,16 @@
 
 .dashboard__logo{
   margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  height: 87px;
 }
+
+
 
 .title{
   font-size: 16px;
+
 }
 
 .dashboard__navigation ul{
@@ -33,6 +39,8 @@
   flex-direction: column;
   gap: 25px;
 }
+
+
 
 .dashboard__navigation ul li{
   position: relative;
@@ -113,4 +121,47 @@
 
 .dashboard__navigation ul li a i{
   font-size: 25px;
+}
+
+
+@media(max-width:991px){
+
+  .dashboard__navigation{
+      left: -300px;
+  }
+  .dashboard__navigation.active{
+      width: 300px;
+      left: 0;
+  }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+@media(max-width:480px){
+  .dashboard__navigation{
+      width: 100%;
+      z-index: 1000;
+      left:-100%;
+   /*    left: -100%;
+      z-index: 1000; */
+  }
+
+  .dashboard__navigation.active{
+      width: 100%;
+      /* width: 100%;
+      left: 0; */
+  }
+
+
+
 }

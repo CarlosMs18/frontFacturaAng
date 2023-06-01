@@ -16,7 +16,7 @@
 }
 
 .dashboard__bar i{
-  font-size:32px;
+  font-size:22px;
 }
 
 .dashboard__search{
@@ -58,4 +58,29 @@ font-size: 16px;
  width: 100%;
  height: 100%;
  object-fit: cover;
+}
+
+
+
+
+
+
+
+@media(max-width:480px){
+
+
+  .dashboard__bar{
+      z-index: 1000;
+  }
+
+
+
+
+/*
+  .dashboard__principal.active{
+      color: #fff;
+  position: fixed;
+  right: 0;
+  left: initial;
+  } */
 }
