@@ -1,0 +1,23 @@
+.dashboard__container{
+  position: relative;
+  width: 100%;
+}
+.dashboard__principal{
+  padding: 22px 0px 0px 13px;
+  position: absolute;
+width: calc(100% - 320px);
+left: 300px;
+min-height: 100vh;
+background: var(--white);
+transition: .5s;
+
+
+}
+
+.dashboard__principal.active{
+  width: calc(100% - 110px);
+  left: 99px;
+
+}
+
+
