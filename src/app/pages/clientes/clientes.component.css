@@ -25,19 +25,19 @@
 }
 
 .dashboard__title button{
-  background: var(--blue);
+ /*  background: var(--blue);
   padding: 8px;
   border-radius: 10px;
   border: none;
   color: var(--white);
   cursor: pointer;
-  transition: .4s;
+  transition: .4s; */
 }
 
 
 .dashboard__title button:hover{
 
-  background: #211a6d;
+  /* background: #211a6d; */
 }
 
 .dashboard__table{

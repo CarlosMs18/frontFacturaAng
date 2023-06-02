@@ -1,6 +1,8 @@
+import { ActivatedRoute } from '@angular/router';
 import { Cliente } from './../../models/cliente.model';
 import { ClientesService } from './../../services/clientes.service';
 import { Component, OnInit } from '@angular/core';
+import { Paginacion } from 'src/app/interface/paginacion.interface';
 
 @Component({
   selector: 'app-clientes',
@@ -11,27 +13,46 @@ export class ClientesComponent implements OnInit {
 
   public clientes : Cliente[] = [];
   public cargando : boolean = true;
-  constructor(private clienteService : ClientesService){
+  public paginacion!: Paginacion;
+  constructor(
+    private clienteService : ClientesService,
+    private activatedRoute : ActivatedRoute
+  ){
 
 
 
   }
   ngOnInit(): void {
-    this.obtenerClientes();
+    this.activatedRoute.paramMap.subscribe(
+      {
+        next : params => {
+         let page  = +params.get('page')!;
+         if(!page){
+          page = 0;
+         }
+
+         this.obtenerClientes(page)
+        }
+      }
+    )
+
+
   }
 
 
-  obtenerClientes(){
-    this.clienteService.getClientes()
+  obtenerClientes(page : number){
+    this.clienteService.getClientes(page)
     .subscribe(
-         {
-          next : (clientesData : Cliente[]) => {
-            this.clientes = clientesData
-            this.cargando = false;
-
-          }
-         }
+      {
+        next : (response) => {
+            console.log(response)
+              this.clientes = response.content;
+              this.cargando = false;
+              this.paginacion = response
+        }
+      }
     )
+
   }
 
 

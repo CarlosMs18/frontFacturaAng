@@ -7,7 +7,7 @@ export class Cliente{
   email ?: string;
   foto?: string;
   createAt? : string;
-  fecha ?: string;
+
   region? : Region;
   facturas?: Array<Factura> = [];
 

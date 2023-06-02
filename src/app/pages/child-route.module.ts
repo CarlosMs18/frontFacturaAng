@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {path : '', component : ClientesComponent},
+  {path : 'clientes/page/:page',component: ClientesComponent},
   {path : 'clientes-form',component :ClienteFormComponent},
   {path : 'clientes-form/:id',component : ClienteFormComponent}
 ];

@@ -2,7 +2,7 @@
 <div class="dashboard__formulario">
   <div class="dashboard__form">
       <div class="dashboard__title">
-          <h2>Crear Cliente</h2>
+          <h2>{{tituloForm}}</h2>
     </div>
     <form class="formulario" [formGroup]="clienteForm">
        <div class="form-group">
@@ -18,13 +18,14 @@
              formControlName="nombre"
              >
             <label for="floatingInput" >Ingrese nombre ...</label>
+
             <span class="text-danger"
             *ngIf="clienteForm.get('nombre')?.hasError('required') && clienteForm.get('nombre')?.touched" >
               El nombre del cliente es <strong>requerido </strong>
             </span>
 
             <span class="text-danger"
-            *ngIf="clienteForm.get('nombre')?.hasError('minlength') && clienteForm.get('nombre')?.touched" >
+            *ngIf="clienteForm.get('nombre')?.hasError('minlength') && clienteForm.get('nombre')?.touched " >
               El nombre del cliente es <strong>muy corta</strong>
             </span>
           </div>

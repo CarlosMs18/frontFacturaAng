@@ -3,7 +3,7 @@
   <div class="dashboard__orders">
       <div class="dashboard__title">
           <h2>Tabla de Clientes</h2>
-          <button [routerLink]="['/api/clientes-form']">Crear Cliente</button>
+          <button class="btn btn-success" [routerLink]="['/api/clientes-form']">Crear Cliente</button>
       </div>
 
       <table class="dashboard__table" *ngIf="clientes.length > 0 && !cargando">
@@ -13,6 +13,7 @@
                   <td>Apellido</td>
                   <td>Email</td>
                   <td>Fecha</td>
+                  <td>Region</td>
                   <td>Editar</td>
                   <td>Eliminar</td>
               </tr>
@@ -23,8 +24,10 @@
               <td>{{cliente.apellido}}</td>
               <td>{{cliente.email}}</td>
               <td>{{cliente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+              <td>{{cliente.region?.nombre}}</td>
+
               <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+                <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/api/clientes-form',cliente.id]" >Editar</button>
               </td>
               <td>
                 <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCliente(cliente)">Eliminar</button>
@@ -37,6 +40,8 @@
       <div class="dashboard__no__clientes" *ngIf="clientes.length === 0 && !cargando" >
         <p class="text-danger">No hay clientes para mostrar, pruebe agregando uno</p>
       </div>
+
+      <app-paginador  [paginacion]="paginacion"  *ngIf="clientes.length > 0 && paginacion"></app-paginador>
   </div>
 
 </div>

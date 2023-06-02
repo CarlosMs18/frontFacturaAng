@@ -8,6 +8,7 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -22,7 +23,8 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    ComponentsModule
 
   ]
 })
