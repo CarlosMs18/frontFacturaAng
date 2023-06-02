@@ -1,131 +1,42 @@
-
+<app-spinner *ngIf="cargando"></app-spinner>
 <div class="dashboard__information">
   <div class="dashboard__orders">
       <div class="dashboard__title">
           <h2>Tabla de Clientes</h2>
-          <span>View All</span>
+          <button [routerLink]="['/api/clientes-form']">Crear Cliente</button>
       </div>
 
-      <table class="dashboard__table">
+      <table class="dashboard__table" *ngIf="clientes.length > 0 && !cargando">
           <thead>
               <tr>
-                  <td>Name</td>
-                  <td>Price</td>
-                  <td>Payment</td>
-                  <td>Status</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email</td>
+                  <td>Fecha</td>
+                  <td>Editar</td>
+                  <td>Eliminar</td>
               </tr>
           </thead>
-          <tbody>
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status delivered">Delivered</span></td>
-              </tr>
+          <tbody >
+            <tr *ngFor="let cliente of clientes">
+              <td>{{cliente.nombre}}</td>
+              <td>{{cliente.apellido}}</td>
+              <td>{{cliente.email}}</td>
+              <td>{{cliente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCliente(cliente)">Eliminar</button>
+              </td>
+            </tr>
 
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status return">Delivered</span></td>
-              </tr>
-
-
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status progress">Delivered</span></td>
-              </tr>
-
-
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status return">Delivered</span></td>
-              </tr>
-
-
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status pending">Delivered</span></td>
-              </tr>
-
-
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status return">Delivered</span></td>
-              </tr>
-
-
-
-              <tr>
-                  <td>Star Refrigerator</td>
-                  <td>$1200</td>
-                  <td>Paid</td>
-                  <td><span class="status progress">Delivered</span></td>
-              </tr>
           </tbody>
       </table>
-  </div>
-  <div class="dashboard__customers">
-      <h2>Recents Customers</h2>
-      <div class="dashboard__customers--contenido">
-          <div class="dashboard__customers--users">
-              <div class="dashboard__customers--picture">
-                 <img src="img/customer02.jpg" alt="">
-              </div>
-              <div class="dashboard__customers---info">
-                 <h3>Carlos</h3>
-                 <span>Perú</span>
-              </div>
-         </div>
 
-         <div class="dashboard__customers--users">
-             <div class="dashboard__customers--picture">
-                <img src="img/customer02.jpg" alt="">
-             </div>
-             <div class="dashboard__customers---info">
-                <h3>Carlos</h3>
-                <span>Perú</span>
-             </div>
-        </div>
-
-        <div class="dashboard__customers--users">
-             <div class="dashboard__customers--picture">
-             <img src="img/customer02.jpg" alt="">
-             </div>
-             <div class="dashboard__customers---info">
-             <h3>Carlos</h3>
-             <span>Perú</span>
-             </div>
-         </div>
-
-         <div class="dashboard__customers--users">
-             <div class="dashboard__customers--picture">
-                <img src="img/customer02.jpg" alt="">
-             </div>
-             <div class="dashboard__customers---info">
-                <h3>Carlos</h3>
-                <span>Perú</span>
-             </div>
-        </div>
-
-
-        <div class="dashboard__customers--users">
-         <div class="dashboard__customers--picture">
-            <img src="img/customer02.jpg" alt="">
-         </div>
-         <div class="dashboard__customers---info">
-            <h3>Carlos</h3>
-            <span>Perú</span>
-         </div>
-    </div>
+      <div class="dashboard__no__clientes" *ngIf="clientes.length === 0 && !cargando" >
+        <p class="text-danger">No hay clientes para mostrar, pruebe agregando uno</p>
       </div>
   </div>
+
 </div>

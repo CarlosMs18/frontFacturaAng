@@ -6,22 +6,35 @@
   gap: 20px; */
 }
 
-.dashboard__orders{
+/* .dashboard__orders{
+
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  padding: 15px 20px;
+  border-radius: 20px;
+
+} */
+.dashboard__form{
 
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   padding: 15px 20px;
   border-radius: 20px;
 
 }
-
 .dashboard__title{
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .dashboard__title h2{
   color: var(--blue);
+
+  font-size: 27px;
+  text-align: center;
+}
+
+.formulario{
+  margin-top: 30px;
 }
 
 .dashboard__title button{
@@ -96,6 +109,39 @@
   margin-top: 20px;
   font-weight: 800;
 }
+
+
+.formulario__primero{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.formulario__secundario{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.form__date{
+
+}
+
+.form__date input{
+  height: 100%;
+}
+
+.form__select{
+  margin-top: 22px;
+}
+
+
+.formulario__buttons{
+  margin-top: 30px;
+  text-align: center;
+}
+
 /* .status{
   color: var(--white);
   padding:  6px;

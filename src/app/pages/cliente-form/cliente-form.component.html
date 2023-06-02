@@ -1,0 +1,117 @@
+
+<div class="dashboard__formulario">
+  <div class="dashboard__form">
+      <div class="dashboard__title">
+          <h2>Crear Cliente</h2>
+    </div>
+    <form class="formulario" [formGroup]="clienteForm">
+       <div class="form-group">
+
+        <div class="formulario__primero">
+          <div class="form-floating">
+
+            <input
+            type="text"
+             placeholder="Ingrese nombre ..."
+            class="form-control"
+             id="floatingInput"
+             formControlName="nombre"
+             >
+            <label for="floatingInput" >Ingrese nombre ...</label>
+            <span class="text-danger"
+            *ngIf="clienteForm.get('nombre')?.hasError('required') && clienteForm.get('nombre')?.touched" >
+              El nombre del cliente es <strong>requerido </strong>
+            </span>
+
+            <span class="text-danger"
+            *ngIf="clienteForm.get('nombre')?.hasError('minlength') && clienteForm.get('nombre')?.touched" >
+              El nombre del cliente es <strong>muy corta</strong>
+            </span>
+          </div>
+          <div class="form-floating">
+
+            <input
+            type="text"
+            placeholder="Ingrese Apellido ..."
+            class="form-control"
+            id="floatingInput"
+            formControlName="apellido"
+            >
+            <label for="floatingInput" >Ingrese Apellido ...</label>
+            <span class="text-danger"
+            *ngIf="clienteForm.get('apellido')?.hasError('required') && clienteForm.get('apellido')?.touched" >
+              El apellido del cliente es <strong>requerido</strong>
+            </span>
+          </div>
+        </div>
+
+        <div class="formulario__secundario">
+          <div class="form-floating">
+
+            <input
+            type="text"
+            placeholder="Ingrese E-mail ..."
+            class="form-control"
+            id="floatingInput"
+            formControlName="email"
+            >
+            <label for="floatingInput" >Ingrese E-mail ...</label>
+            <span class="text-danger"
+            *ngIf="clienteForm.get('email')?.hasError('required') && clienteForm.get('email')?.touched" >
+              El email del cliente es <strong>requerido</strong>
+            </span>
+
+            <span class="text-danger"
+            *ngIf="clienteForm.get('email')?.hasError('pattern') && clienteForm.get('email')?.touched" >
+              El email del cliente debe de <strong>tener formato de email</strong>
+            </span>
+          </div>
+
+          <div class="form__date">
+
+            <input
+            id="startDate"
+            class="form-control"
+            type="date"
+            formControlName="fecha"
+             />
+             <span class="text-danger"
+             *ngIf="clienteForm.get('fecha')?.hasError('required') && clienteForm.get('fecha')?.touched" >
+               La fecha del cliente  <strong>es obligatorio</strong>
+             </span>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-floating form__select mt-5">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="region">
+            <option  value="" selected>Eliga una región</option>
+            <option
+            *ngFor="let region of regionesList"
+            [value]="region.id"
+            >
+              {{region.nombre}}
+            </option>
+          </select>
+          <label for="floatingSelect">Seleccione una opción</label>
+          <span class="text-danger"
+          *ngIf="clienteForm.get('region')?.hasError('required') && clienteForm.get('region')?.touched" >
+            La region del cliente  <strong>es obligatorio</strong>
+          </span>
+        </div>
+
+       </div>
+
+       <div class="formulario__buttons">
+          <button class="btn btn-success btn-lg" (click)="crearCliente()">Crear</button>
+          <button class="btn btn-danger ms-2 btn-lg" (click)="resetear()">Resetear</button>
+       </div>
+    </form>
+
+
+
+  </div>
+
+</div>
