@@ -20,6 +20,7 @@ export class ClienteFormComponent implements OnInit {
   public idCliente : string = '';
   public tituloForm : string = "Crear Cliente"
   public clienteRecuperado !: Cliente;
+  public nombreBtn : string = "Crear"
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +53,7 @@ export class ClienteFormComponent implements OnInit {
           let id = params['id'];
           if(id){
            this.idCliente = id;
+           this.nombreBtn = "Editar"
            this.getClientePorId(id);
            return;
           }

@@ -27,9 +27,17 @@ export class ClientesService {
   }
 
 
+
   getCliente(id : string){
     return this.http.get<{mensaje : string, cliente : Cliente}>(`${this.base_url}/clientes/${id}`);
   }
+
+
+
+  getSearchCliente(termino : string){
+    return this.http.get<any>(`${this.base_url}/clientes/filter/${termino}`);
+  }
+
 
 
   postCliente(cliente : Cliente){

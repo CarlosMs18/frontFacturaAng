@@ -6,7 +6,7 @@
 
   <div class="dashboard__search">
       <label>
-          <input type="text" placeholder="Search here">
+          <input type="text" placeholder="Buscar Cliente ..." #input (keyup)="buscarClientes(input.value)">
         <!--   <ion-icon name="search-outline"></ion-icon> -->
         <i class="fa-solid fa-magnifying-glass"></i>
       </label>
