@@ -11,9 +11,11 @@ export class HeaderComponent {
   constructor(private clienteService : ClientesService){}
 
   buscarClientes(termino : string){
-      this.clienteService.getSearchCliente(termino)
-            .subscribe(response => console.log(response))
 
+    this.clienteService.inputValue.emit(termino)
+    /*   this.clienteService.getSearchCliente(termino)
+            .subscribe(response => console.log(response))
+ */
   }
 
 }

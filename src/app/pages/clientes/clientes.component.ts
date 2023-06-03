@@ -55,7 +55,7 @@ export class ClientesComponent implements OnInit {
 
 
 
-    this.clienteService.inputValue.subscribe(termino => {
+    this.clienteService.inputValue.subscribe((termino : string) => {
 
         if(termino.length === 0){
 
@@ -67,6 +67,7 @@ export class ClientesComponent implements OnInit {
             .subscribe(
               {
                 next : (clientes) => {
+
                     this.clientesEncontrados = clientes;
                     this.clientes = clientes;
                 }
