@@ -21,10 +21,13 @@
                 <div class="col-6">
 
                   <img [src]="cliente.foto! | imagen " alt="{{cliente.foto}}" class="img-thumbnail rounded">
-                  <input class="form-control mt-2" (change)="seleccionarFoto($event)"  type="file" id="formFile" >
+                  <form action="" [formGroup]="fotoForm">
+                    <input class="form-control mt-2" (change)="seleccionarFoto($event)"  type="file" id="formFile" formControlName="foto" >
+                  </form>
                   <div class="mt-2">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
-                    <button type="button" class="btn btn-primary ms-2">Guardar Foto</button>
+                    <button type="button" class="btn btn-primary" [disabled]="fotoSeleccionada == null" (click)="subirFoto()" >Guardar Foto</button>
+                    <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal" (click)="cerrarModal()">Cancelar</button>
+
                   </div>
                 </div>
               </div>

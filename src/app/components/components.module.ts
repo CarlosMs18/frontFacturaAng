@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ClienteEliminacionComponent } from './cliente-eliminacion/cliente-eliminacion.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { ClienteEliminacionComponent } from './cliente-eliminacion/cliente-elimi
   imports: [
     CommonModule,
     RouterModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule
   ],
   exports :[
     PaginadorComponent,

@@ -6,6 +6,7 @@ import { Paginacion } from 'src/app/interface/paginacion.interface';
 import { ModalService } from 'src/app/services/modal.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UploadService } from 'src/app/services/upload.service';
 
 @Component({
   selector: 'app-clientes',
@@ -34,12 +35,13 @@ export class ClientesComponent implements OnInit {
 
   constructor(
     private clienteService : ClientesService,
+    private uploadService : UploadService,
     private activatedRoute : ActivatedRoute,
     private router : Router,
     private modalService : ModalService,
-    private toastr : ToastrService
-  ){
+    private toastr : ToastrService,
 
+  ){
 
 
   }
@@ -88,7 +90,21 @@ export class ClientesComponent implements OnInit {
 
     })
 
+
+
+    this.uploadService.notificarUpload.subscribe((cliente : Cliente) => {
+      this.clientes = this.clientes.map(clienteOriginal => {
+          if(clienteOriginal.id  == cliente.id){
+              clienteOriginal.foto = cliente.foto
+          }
+          return clienteOriginal;
+      })
+    })
+
   }
+
+
+
 
 
   obtenerClientes(page : number){
@@ -117,6 +133,7 @@ export class ClientesComponent implements OnInit {
     )
 
   }
+
   confirmarEliminacion(cliente : Cliente){
    this.eliminarCliente(cliente);
   }
