@@ -1,4 +1,14 @@
 <app-spinner *ngIf="cargando"></app-spinner>
+<!-- <app-detalle-cliente *ngIf="clienteSeleccionado" [cliente]="clienteSeleccionado"></app-detalle-cliente> -->
+<app-cliente-detalle *ngIf="clienteSeleccionado &&  !clienteEliminacion" [cliente]="clienteSeleccionado"></app-cliente-detalle>
+<app-cliente-eliminacion
+
+*ngIf="!clienteSeleccionado && clienteEliminacion"
+[cliente]="clienteEliminacion"
+
+(confirmarEliminacion)="confirmarEliminacion($event)"
+></app-cliente-eliminacion>
+
 <div class="dashboard__information">
   <div class="dashboard__orders">
       <div class="dashboard__title">
@@ -9,10 +19,11 @@
       <table class="dashboard__table" *ngIf="clientes.length > 0 && !cargando">
           <thead>
               <tr>
+                  <td>Foto</td>
                   <td>Nombre</td>
                   <td>Apellido</td>
                   <td>Email</td>
-                  <td>Fecha</td>
+                  <td>Creación</td>
                   <td>Region</td>
                   <td>Editar</td>
                   <td>Eliminar</td>
@@ -20,17 +31,32 @@
           </thead>
           <tbody >
             <tr *ngFor="let cliente of clientes">
+              <td>
+                <img
+                [src]="cliente.foto! | imagen "
+
+                (click)="abrirModal(cliente)"
+
+                style="width:64px; cursor:pointer;"
+
+                >
+              <!--   <button type="button" (click)="abrirModal(cliente)"
+                class="btn btn-success btn-sm"
+                data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+                 >{{cliente.id}}</button> -->
+              </td>
               <td>{{cliente.nombre}}</td>
               <td>{{cliente.apellido}}</td>
               <td>{{cliente.email}}</td>
               <td>{{cliente.createAt | date:"EEEE dd, MMMM yyyy"}}</td>
               <td>{{cliente.region?.nombre}}</td>
-
+              <!-- (click)="abrirModal(cliente) -->
               <td>
                 <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/api/clientes-form',cliente.id]" >Editar</button>
               </td>
               <td>
-                <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCliente(cliente)">Eliminar</button>
+                <button type="button" class="btn btn-danger btn-sm"  (click)="abrirModalEliminacion(cliente)">Eliminar</button>
               </td>
             </tr>
 

@@ -1,8 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from './../../models/cliente.model';
 import { ClientesService } from './../../services/clientes.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Paginacion } from 'src/app/interface/paginacion.interface';
+import { ModalService } from 'src/app/services/modal.service';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-clientes',
@@ -11,7 +14,9 @@ import { Paginacion } from 'src/app/interface/paginacion.interface';
 })
 export class ClientesComponent implements OnInit {
 
-  public mensajeTable : string = 'No hay clientes para mostrar, pruebe agregando uno';
+  @Output()
+
+
 
   page : number = 0;
 
@@ -23,10 +28,16 @@ export class ClientesComponent implements OnInit {
 
   public clientesEncontrados : Cliente[]  = [];
 
+
+  public clienteSeleccionado!: Cliente;
+  public clienteEliminacion! : Cliente;
+
   constructor(
     private clienteService : ClientesService,
     private activatedRoute : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private modalService : ModalService,
+    private toastr : ToastrService
   ){
 
 
@@ -106,7 +117,9 @@ export class ClientesComponent implements OnInit {
     )
 
   }
-
+  confirmarEliminacion(cliente : Cliente){
+   this.eliminarCliente(cliente);
+  }
 
   eliminarCliente(cliente : Cliente){
     this.clienteService.deleteCliente(cliente)
@@ -116,11 +129,32 @@ export class ClientesComponent implements OnInit {
 
               /* this.clientes = this.clientes.filter(client => client.id != cliente.id); */
               this.obtenerClientes(this.page);
+              this.modalService.cerrarModal();
+              this.toastr.success("El cliente ha sido eliminado con exito", "Registro Eliminado")
 
+            },
+            error : (err: HttpErrorResponse) => {
+              this.toastr.warning(err.error.mensaje, "Error al eliminar cliente");
+              this.obtenerClientes(this.page);
+              this.modalService.cerrarModal();
             }
           }
         )
   }
 
+  abrirModal(cliente : Cliente){
+
+
+      this.clienteSeleccionado = cliente;
+      this.clienteEliminacion= null!;
+      this.modalService.abrirModal();
+  }
+
+
+  abrirModalEliminacion(cliente: Cliente){
+    this.clienteEliminacion = cliente;
+    this.clienteSeleccionado= null! ;
+    this.modalService.abrirModal();
+  }
 
 }

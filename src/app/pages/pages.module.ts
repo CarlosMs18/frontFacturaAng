@@ -9,6 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import { ComponentsModule } from '../components/components.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { DetalleClienteComponent } from './detalle-cliente/detalle-cliente.component';
+
 
 
 
@@ -17,14 +20,17 @@ import { ComponentsModule } from '../components/components.module';
 
     ClientesComponent,
     ClienteFormComponent,
-    PagesComponent
+    PagesComponent,
+    DetalleClienteComponent
+
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
 
   ]
 })
