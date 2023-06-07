@@ -45,7 +45,7 @@ export class ClienteFormComponent implements OnInit {
       this.clienteForm.get('region')?.valueChanges
               .subscribe((regionId : number) =>{
                 this.regionSeleccionada = this.regionesList.filter(region => region.id == regionId);
-                console.log(this.regionSeleccionada)
+
               })
 
 
@@ -68,7 +68,7 @@ export class ClienteFormComponent implements OnInit {
       return;
     }
 
-    console.log(this.clienteForm.value)
+
 
     const data : Cliente = {
       nombre : this.clienteForm.get('nombre')?.value,
@@ -81,7 +81,7 @@ export class ClienteFormComponent implements OnInit {
     }
 
     if(this.idCliente){
-      console.log(data)
+
         this.clienteService.updateCliente(data, this.idCliente )
 
               .subscribe(
