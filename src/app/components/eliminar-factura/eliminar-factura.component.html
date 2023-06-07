@@ -1,0 +1,21 @@
+<div class="abrirModal animacion fadeIn eliminar" *ngIf="modalService.modalEliminacion">
+  <div class="modal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Eliminación de Factura</h4>
+          <button (click)="cerrarModalEliminacion()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Esta seguro en eliminar la Factura N° <span class="fw-bold">{{facturaEliminacion.id}}</span></p>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-danger" (click)="eliminarFactura(factura)">Eliminar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cerrarModalEliminacion()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

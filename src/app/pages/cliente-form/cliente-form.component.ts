@@ -51,6 +51,7 @@ export class ClienteFormComponent implements OnInit {
 
       this.activateRoute.params.subscribe(params => {
           let id = params['id'];
+
           if(id){
            this.idCliente = id;
            this.nombreBtn = "Editar"
@@ -74,6 +75,7 @@ export class ClienteFormComponent implements OnInit {
       apellido : this.clienteForm.get('apellido')?.value,
       email : this.clienteForm.get('email')?.value,
       createAt : this.clienteForm.get('fecha')?.value,
+      facturas : [],
       region : this.regionSeleccionada[0]
 
     }

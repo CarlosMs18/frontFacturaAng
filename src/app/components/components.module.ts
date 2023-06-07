@@ -6,6 +6,7 @@ import { ClienteDetalleComponent } from './cliente-detalle/cliente-detalle.compo
 import { PipesModule } from '../pipes/pipes.module';
 import { ClienteEliminacionComponent } from './cliente-eliminacion/cliente-eliminacion.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EliminarFacturaComponent } from './eliminar-factura/eliminar-factura.component';
 
 
 
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PaginadorComponent,
     ClienteDetalleComponent,
     ClienteEliminacionComponent,
+    EliminarFacturaComponent,
 
   ],
   imports: [
@@ -26,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports :[
     PaginadorComponent,
     ClienteDetalleComponent,
-    ClienteEliminacionComponent
+    ClienteEliminacionComponent,
+
+    EliminarFacturaComponent
 
 
   ]

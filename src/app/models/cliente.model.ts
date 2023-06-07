@@ -9,6 +9,6 @@ export class Cliente{
   createAt? : string;
 
   region? : Region;
-  facturas?: Array<Factura> = [];
+  facturas: Factura[] = [];
 
 }

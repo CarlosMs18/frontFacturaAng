@@ -9,14 +9,14 @@
 (confirmarEliminacion)="confirmarEliminacion($event)"
 ></app-cliente-eliminacion>
 
-<div class="dashboard__information">
+<div class="dashboard__information" *ngIf="clientes.length > 0 && !cargando">
   <div class="dashboard__orders">
       <div class="dashboard__title">
           <h2>Tabla de Clientes</h2>
           <button class="btn btn-success" [routerLink]="['/api/clientes-form']">Crear Cliente</button>
       </div>
 
-      <table class="dashboard__table" *ngIf="clientes.length > 0 && !cargando">
+      <table class="dashboard__table">
           <thead>
               <tr>
                   <td>Foto</td>

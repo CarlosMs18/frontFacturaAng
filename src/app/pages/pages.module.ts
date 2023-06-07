@@ -6,11 +6,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
-import { DetalleClienteComponent } from './detalle-cliente/detalle-cliente.component';
+import { FacturaDetalleComponent } from './factura-detalle/factura-detalle.component';
+import { FacturaFormComponent } from './factura-form/factura-form.component';
+import { MaterialModule } from '../material/material.module';
+
 
 
 
@@ -21,16 +24,20 @@ import { DetalleClienteComponent } from './detalle-cliente/detalle-cliente.compo
     ClientesComponent,
     ClienteFormComponent,
     PagesComponent,
-    DetalleClienteComponent
+    FacturaDetalleComponent,
+    FacturaFormComponent
+
 
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    MaterialModule
 
   ]
 })

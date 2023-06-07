@@ -1,5 +1,5 @@
 .abrirModal{
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
   position:fixed;
   top:0px;
   left: 0px;
@@ -7,15 +7,16 @@
   height: 100%;
   z-index: 1000;
 }
-
-.animacion{
-  animation-duration: 2s;
-  animation-fill-mode:both;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
+.eliminar{
+  z-index : 2000
 }
 
-
+.animacion{
+  animation-duration: 0.5s;
+  animation-fill-mode:both;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+}
 .fadeIn{
   animation-name: fadeIn;
   -webkit-animation-name: fadeIn;

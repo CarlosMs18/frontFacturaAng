@@ -135,6 +135,7 @@ export class ClientesComponent implements OnInit {
   }
 
   confirmarEliminacion(cliente : Cliente){
+
    this.eliminarCliente(cliente);
   }
 
